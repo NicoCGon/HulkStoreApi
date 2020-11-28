@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Index  here</title>
+	
+  	<link rel="icon" th:href="@{/dist/images/loghulk.png}" type="image/png">
+	
+	<!-- Bootstrap 4.0.0 -->
+	<link rel="stylesheet" th:href="@{/dist/bootstrap-4.0.0/css/bootstrap.css}">
+
+	<!-- jQuery 3 -->
+	<script th:src="@{/dist/jquery/dist/jquery.js}"></script>
+	<!-- Bootstrap 4.0.0 -->
+	<script th:src="@{/dist/bootstrap-4.0.0/js/bootstrap.js}"></script>
+	<!-- Notificaciones -->
+	<script th:src="@{/dist/bootstrap-4.0.0/js/bootstrap-notify.js}"></script>
+	<!-- Notificaciones -->
+	<script th:src="@{/dist/js/login.js}"></script>
+	
+</head>
+<body class="text-center">
+	
+	<form class="form-login" th:action="@{/login}" method="post">
+		<div class="col-md-12">
+			<div class="col-md-8" th:if="${error != null or success != null or warning != null}">
+				<input class="invisible" id="error" th:value="${error}"/>
+				<input class="invisible" id="success" th:value="${success}"/>
+				<input class="invisible" id="warning" th:value="${warning}"/>
+			</div>
+			<div class="col-md-4">
+				<img class="mb-4"
+					th:src="@{/dist/images/loghulk.png}"
+					alt="" width="72" height="72">
+				<h1 class="h3 mb-3 font-weight-normal">Please Sign in</h1>
+				<label for="inputEmail" class="sr-only">Email address</label> 
+				<input type="email" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> 
+				<label for="inputPassword" class="sr-only">Password</label> 
+				<input type="password" name="password" class="form-control" placeholder="Password" required="required">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+			</div>
+		</div>
+	</form>
+</body>
+</html>

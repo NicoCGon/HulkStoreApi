@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="fragments/jsgenerales :: headstandart">
+</head>
+<body>
+<div class="container">
+
+    <div class="starter-template">
+        <h1>403 - Aceso Denegado</h1>
+        <div th:inline="text">User '[[${#httpServletRequest.remoteUser}]]', No tiene permiso. Roles: <span sec:authentication="principal.authorities"></span></div>
+    </div>
+
+</div>
+</body>
+</html>
