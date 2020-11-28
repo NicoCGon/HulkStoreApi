@@ -2,7 +2,6 @@ package com.todo1.api.login.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.MockitoAnnotations.initMocks;
 
 import java.math.BigInteger;
 import java.util.Optional;
@@ -21,6 +20,7 @@ import com.todo1.api.entities.User;
 import com.todo1.api.interfaces.IUserService;
 import com.todo1.api.repositories.AuthorityRepository;
 import com.todo1.api.repositories.UserRepository;
+import com.todo1.api.services.UserServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,9 +36,12 @@ public class UserServiceTest {
     private IUserService userService;
     
     private User user;
+    private UserServiceImpl userServiceUnderTest;
 
-	@Before
+    @Before
     public void setUp() {
+        userServiceUnderTest = new UserServiceImpl(mockUserRepository,
+        										   mockAuthorityRepository);
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(5);
 		user = User.builder()
 				.id(BigInteger.ONE)
@@ -55,9 +58,9 @@ public class UserServiceTest {
     @Test
     public void testFindUserByEmail() {
         // Setup
-        String email = "test@test.com";
-        Optional<User> result = userService.findByUsername(email);
-        assertEquals(email, result.get().getUsername());
+ 		String email = "test@test.com";
+ 		Optional<User> result = userServiceUnderTest.findByUsername(email);
+        assertEquals("No se encontro el usuario", email, result.isPresent() ? result.get().getUsername() : new String());
     }
 
     @Test

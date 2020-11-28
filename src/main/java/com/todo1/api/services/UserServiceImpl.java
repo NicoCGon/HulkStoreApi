@@ -16,16 +16,13 @@ import com.todo1.api.repositories.UserRepository;
 @Service("userService")
 public class UserServiceImpl implements IUserService{
 	
-	@Autowired
-    private UserRepository userRepository;
-	
-	@Autowired
-    private AuthorityRepository authorityRepository;
+    private final UserRepository userRepository;
+    private final AuthorityRepository authorityRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, AuthorityRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
-        this.authorityRepository = roleRepository;
+        this.authorityRepository = authorityRepository;
     }
 
     public Optional<User> findByUsername(String username) {
