@@ -38,9 +38,7 @@ public class UserServiceTest {
     private User user;
 
 	@Before
-	@SuppressWarnings("deprecation")
     public void setUp() {
-		initMocks(this);
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(5);
 		user = User.builder()
 				.id(BigInteger.ONE)
