@@ -13,7 +13,7 @@ import com.todo1.api.interfaces.IUserService;
 import com.todo1.api.repositories.AuthorityRepository;
 import com.todo1.api.repositories.UserRepository;
 
-@Service("userService")
+@Service
 public class UserServiceImpl implements IUserService{
 	
     private final UserRepository userRepository;
@@ -25,10 +25,12 @@ public class UserServiceImpl implements IUserService{
         this.authorityRepository = authorityRepository;
     }
 
+	@Override
     public Optional<User> findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
+	@Override
     public User saveUser(User user) {
         user.setEnabled(Boolean.TRUE);
         Authority authority = authorityRepository.findByAuthority("ROLE_USER");
