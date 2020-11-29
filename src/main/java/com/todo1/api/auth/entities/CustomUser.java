@@ -14,10 +14,10 @@ public class CustomUser extends UsernamePasswordAuthenticationToken{
 	 * 
 	 */
 	private static final long serialVersionUID = 2799269586911067020L;
-	private final Integer dni;
+	private final Integer age;
 
-	public CustomUser(String username, String password,Integer dni, Collection<? extends GrantedAuthority> authorities) {
+	public CustomUser(String username, String password,Integer age, Collection<? extends GrantedAuthority> authorities) {
 		super(username, password, authorities);
-		this.dni = dni;
+		this.age = age;
 	}
 }

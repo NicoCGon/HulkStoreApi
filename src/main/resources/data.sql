@@ -1,10 +1,10 @@
-INSERT INTO User (user_id,user_email,user_password,user_enabled,user_dni,user_name,user_last_name,user_age) VALUES(1,'nicolasgonzalez995@hotmail.com','$2a$05$5GT0Se0iqAdPj5ylSmbPbeNkNDKI.Zudn6hqTqTjS/WjM.4uiukCC',1,38534897,'Nicolas','Gonzalez',25);
+INSERT INTO User (user_id,user_email,user_password,user_enabled,user_name,user_last_name,user_age) VALUES(0,'nicolasgonzalez995@hotmail.com','$2a$05$5GT0Se0iqAdPj5ylSmbPbeNkNDKI.Zudn6hqTqTjS/WjM.4uiukCC',1,'Nicolas','Gonzalez',25);
 
 INSERT INTO Authority (authority_id,authority) VALUES (1, 'ROLE_ADMIN');
 INSERT INTO Authority (authority_id,authority) VALUES (2, 'ROLE_USER');
 
-INSERT INTO user_authority (user_id, authority_id) VALUES (1,1);
-INSERT INTO user_authority (user_id, authority_id) VALUES (1,2);
+INSERT INTO user_authority (user_id, authority_id) VALUES (0,1);
+INSERT INTO user_authority (user_id, authority_id) VALUES (0,2);
 
 INSERT INTO Product (product_id,product_name,product_und,product_url, product_stock) VALUES(1154,'Buzo Marvel',1,'https://m.media-amazon.com/images/I/81aYUS9mfCL._AC_UL320_.jpg',50);
 INSERT INTO Product (product_id,product_name,product_und,product_url, product_stock) VALUES(1155,'Camiseta Marvel',1,'https://i.pinimg.com/236x/94/91/b0/9491b09b1067ff4d89af4a176347e931--printed-hoodies-harajuku.jpg',70);

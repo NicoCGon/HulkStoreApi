@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login TODO 1</title>
+	<title>Sign Up TODO 1 v[[${@environment.getProperty('version')}]]</title>
 	
   	<link rel="icon" th:href="@{/dist/images/loghulk.png}" type="image/png">
 	
@@ -17,23 +17,31 @@
 	<script th:src="@{/dist/jquery/dist/jquery.js}"></script>
 	<!-- Bootstrap 4.0.0 -->
 	<script th:src="@{/dist/bootstrap-4.0.0/js/bootstrap.js}"></script>
-	<!-- Notificaciones -->
+	<!-- Notificationes -->
 	<script th:src="@{/dist/bootstrap-4.0.0/js/bootstrap-notify.js}"></script>
-	<!-- Notificaciones -->
-	<script th:src="@{/dist/js/login.js}"></script>
+	<!-- Message -->
+	<script th:src="@{/dist/js/message.js}"></script>
+	<!-- Login -->
+	<script th:src="@{/dist/js/sign-up.js}"></script>
 	
 </head>
 <body class="text-center">
-	<form class="form-signin" th:action="@{/login}" method="post">
-		<img class="mb-4" th:src="@{/dist/images/loghulk.png}" alt=""
-			width="72" height="72">
-		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+	<form id="form-sign-up" class="form-signin" th:action="@{/createNewUser}" method="post">
+		<img class="mb-4" th:src="@{/dist/images/loghulk.png}" alt="" width="72" height="72">
+		<h1 class="h3 mb-3 font-weight-normal">Please Sign Up!</h1>
+		<label for="inputPassword" class="sr-only">Name</label>
+		<input type="text" name="name" class="form-control" placeholder="Name" required="required">
+		<label for="inputPassword" class="sr-only">Last Name</label>
+		<input type="text" name="lastName" class="form-control" placeholder="Last Name" required="required">
+		<label for="inputPassword" class="sr-only">Age</label>
+		<input type="text" name="age" class="form-control" placeholder="Age" required="required">
 		<label for="inputEmail" class="sr-only">Email address</label>
-		<input type="email" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> 
+		<input type="email" name="email" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> 
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" name="password" class="form-control" placeholder="Password" required="required">
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		<a th:href="@{/signup}">Sing Up</a>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+		<a th:href="@{/login}">Sing In</a>
     </form>
+	<input th:if="${accept} != null" class="invisible" id="error" th:value="${accept}"/>
 </body>
 </html>

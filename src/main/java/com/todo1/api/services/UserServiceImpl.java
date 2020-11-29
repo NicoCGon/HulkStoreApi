@@ -3,8 +3,10 @@ package com.todo1.api.services;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.todo1.api.auth.entities.Authority;
@@ -34,7 +36,10 @@ public class UserServiceImpl implements IUserService{
     public User saveUser(User user) {
         user.setEnabled(Boolean.TRUE);
         Authority authority = authorityRepository.findByAuthority("ROLE_USER");
-        user.setAuthorities(new HashSet<Authority>(Arrays.asList(authority)));
+        Set<Authority> userAuthorityList = new HashSet<Authority>(Arrays.asList(authority));
+        user.setAuthorities(userAuthorityList);
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(5);
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 }

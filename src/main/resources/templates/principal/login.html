@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login TODO 1</title>
+	<title>Login TODO 1 v[[${@environment.getProperty('version')}]]</title>
 	
   	<link rel="icon" th:href="@{/dist/images/loghulk.png}" type="image/png">
 	
@@ -17,12 +17,12 @@
 	<script th:src="@{/dist/jquery/dist/jquery.js}"></script>
 	<!-- Bootstrap 4.0.0 -->
 	<script th:src="@{/dist/bootstrap-4.0.0/js/bootstrap.js}"></script>
-	<!-- Notificaciones -->
+	<!-- Notificationes -->
 	<script th:src="@{/dist/bootstrap-4.0.0/js/bootstrap-notify.js}"></script>
-	<!-- Sing-up -->
-	<script th:src="@{/dist/js/sign-up.js}"></script>
 	<!-- Message -->
 	<script th:src="@{/dist/js/message.js}"></script>
+	<!-- Login -->
+	<script th:src="@{/dist/js/login.js}"></script>
 	
 </head>
 <body class="text-center">
@@ -34,7 +34,10 @@
 		<input type="email" name="username" class="form-control" placeholder="Email address" required="required" autofocus="autofocus"> 
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" name="password" class="form-control" placeholder="Password" required="required">
-		<button class="btn btn-lg btn-primary btn-block sign-up" type="submit">Sing Up</button>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Sing In</button>
+		<a th:href="@{/signup}">Sing Up</a>
     </form>
+	<input th:if="${success} != null" class="invisible" id="logout" th:value="${success}"/>
+	<input th:if="${error} != null" class="invisible" id="error" th:value="${error}"/>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
        	 	Set<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
                     .map(p -> new SimpleGrantedAuthority(p.getAuthority()))
                     .collect(Collectors.toSet());
-        	return new CustomUser(user.getEmail(), user.getPassword(),user.getDni(),grantedAuthorities);
+        	return new CustomUser(user.getEmail(), user.getPassword(),user.getAge(),grantedAuthorities);
     	}
     	else {
     		throw new BadCredentialsException("Contrasena es incorrecta");

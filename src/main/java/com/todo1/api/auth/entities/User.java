@@ -34,7 +34,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "User")
 public class User {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "user_id")
 	private Integer id;
     @NotNull
@@ -45,9 +45,6 @@ public class User {
 	private String password;
     @Column(name = "user_enabled")
     private boolean enabled;
-    @NotNull
-    @Column(name = "user_dni")
-    private Integer dni;
     @NotNull
     @Column(name = "user_name")
     private String name;
