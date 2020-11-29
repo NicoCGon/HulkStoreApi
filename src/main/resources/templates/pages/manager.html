@@ -31,8 +31,9 @@
 			<div class="collapse navbar-collapse" id="navbarsExample09">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link active" th:href="@{/StoreOnline}">Home</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/Sale}">Ventas</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/Buy}">Compras</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/Products/Sale}">Ventas</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/Products/Buy}">Compras</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/Products/Registry}">Cargar</a></li>
 					<li class="nav-item"><a class="nav-link disabled" title="todavía no disponible" href="#">Manager Kardex</a></li>
 				</ul>
 				<form class="form-inline my-2 my-md-0" th:action="@{/logout}" method="post">
@@ -45,9 +46,10 @@
 				<div class="col-sm-8 mx-auto">
 					<h1>Bienvenido <span th:text="${user.name}"></span>!</h1>
 					<p>Esta es una tienda online sobre articulos de marvel y dc comics</p>
-					<p>En la sección de <a th:href="@{/Sale}">Compra</a> se puede añadir articulos a la
+					<p>En la sección de <a th:href="@{/Products/Sale}">Compra</a> se puede añadir articulos a la
 						tienda.</p>
-					<p>En la sección de <a th:href="@{/Buy}">Venta</a> se puede vender la cantidad deseada sobre cierto artìculo de la tienda.</p>
+					<p>En la sección de <a th:href="@{/Products/Buy}">Venta</a> se puede vender la cantidad deseada sobre cierto articulo de la tienda.</p>
+					<p>En la sección de <a th:href="@{/Products/Registry}">Cargar</a> se puede crear un articulo de la tienda.</p>
 					<p>
 					<p>Dirígase a una sección para continuar
 						<button type="button" class="btn btn-primary acuerdo">De Acuerdo!</button>

@@ -42,6 +42,7 @@
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
 		<a th:href="@{/login}">Sing In</a>
     </form>
-	<input th:if="${accept} != null" class="invisible" id="error" th:value="${accept}"/>
+	<input th:if="${accept} != null" class="invisible" id="accept" th:value="${accept}"/>
+	<input th:each="danger : ${dangers}" class="invisible dangers" th:value="${danger}"/>
 </body>
 </html>
