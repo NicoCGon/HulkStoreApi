@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.todo1.api.entities.Authority;
-import com.todo1.api.entities.User;
+import com.todo1.api.auth.entities.Authority;
+import com.todo1.api.auth.entities.User;
 import com.todo1.api.interfaces.IUserService;
 import com.todo1.api.repositories.AuthorityRepository;
 import com.todo1.api.repositories.UserRepository;
@@ -26,8 +26,8 @@ public class UserServiceImpl implements IUserService{
     }
 
 	@Override
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email); 
     }
 
 	@Override

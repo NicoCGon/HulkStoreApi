@@ -1,4 +1,4 @@
-package com.todo1.api.entities;
+package com.todo1.api.auth.entities;
 
 import java.util.Set;
 
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,17 +37,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
 	private Integer id;
-    @Column(name = "username")
-    private String username;
-    @Column(name = "password")
+    @NotNull
+    @Column(name = "user_email")
+    private String email;
+    @NotNull
+    @Column(name = "user_password")
 	private String password;
-    @Column(name = "enabled")
+    @Column(name = "user_enabled")
     private boolean enabled;
+    @NotNull
+    @Column(name = "user_dni")
+    private Integer dni;
+    @NotNull
+    @Column(name = "user_name")
+    private String name;
+    @NotNull
+    @Column(name = "user_last_name")
+    private String lastName;
+    @NotNull
+    @Column(name = "user_age")
+    private Integer age;
 	
     @ManyToMany(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "FK_User", nullable = false, referencedColumnName = "user_id"), 
-    									inverseJoinColumns = @JoinColumn(name="FK_Authority", nullable = false, referencedColumnName = "authority_id"))
+    @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "authority_id"))
     private Set<Authority> authorities;
-   
     
 }

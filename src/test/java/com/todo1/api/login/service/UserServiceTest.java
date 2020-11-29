@@ -1,7 +1,6 @@
 package com.todo1.api.login.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 
 import java.util.Optional;
 
@@ -9,13 +8,12 @@ import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.todo1.api.entities.User;
+import com.todo1.api.auth.entities.User;
 import com.todo1.api.interfaces.IUserService;
 import com.todo1.api.repositories.AuthorityRepository;
 import com.todo1.api.repositories.UserRepository;
@@ -58,8 +56,8 @@ public class UserServiceTest {
     public void testFindUserByEmail() {
         // Setup
  		String email = "test@test.com";
- 		Optional<User> result = userServiceUnderTest.findByUsername(email);
-        assertEquals("No se encontro el usuario", email, result.isPresent() ? result.get().getUsername() : new String());
+ 		Optional<User> result = userServiceUnderTest.findByEmail(email);
+        assertEquals("No se encontro el usuario", email, result.isPresent() ? result.get().getEmail() : new String());
     }
 
     @Test

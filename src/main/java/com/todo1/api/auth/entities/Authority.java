@@ -1,10 +1,9 @@
-package com.todo1.api.entities;
+package com.todo1.api.auth.entities;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,11 +21,10 @@ import lombok.NoArgsConstructor;
 * 
 */ 
 
-
 @Data
 @Builder
-@NoArgsConstructor 
-@AllArgsConstructor 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Authority")
 public class Authority  {
@@ -36,7 +34,12 @@ public class Authority  {
     private Integer id;
     @Column(name = "authority")
     private String authority;
-    
-    @ManyToMany(mappedBy = "authorities", fetch = FetchType.EAGER)
-    private Set<User> users;
+    @ManyToMany(mappedBy = "authorities")
+    private List<User> user;
+
+    public Authority(Integer id, String authority) {
+        this.id = id;
+        this.authority = authority;
+    }
+
 }

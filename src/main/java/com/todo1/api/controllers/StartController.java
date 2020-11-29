@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class StartController {
 	
-	@RequestMapping(value= {"/TiendaOnline"})
-	public String initTiendaOnline(Model model,Authentication authentication,HttpSession ses,HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value= {"/StoreOnline"})
+	public String initStoreOnline(Model model,Authentication authentication,HttpSession ses,HttpServletRequest request, HttpServletResponse response) {
 		return "pages/manager";
 	}
 }

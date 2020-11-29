@@ -1,11 +1,11 @@
 package com.todo1.api.repositories;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.todo1.api.entities.Authority;
+import com.todo1.api.auth.entities.Authority;
 
-@Repository
-public interface AuthorityRepository extends CrudRepository<Authority, Long> {
+@Repository("roleRepository")
+public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
     Authority findByAuthority(String authority);
 }

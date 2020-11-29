@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.todo1.api.entities.User;
+import com.todo1.api.auth.entities.User;
 import com.todo1.api.interfaces.IUserService;
 
 
@@ -30,8 +31,12 @@ public class LoginController {
 						@RequestParam(value="logout", required = false) String logout, 
 						Model model, RedirectAttributes flash, HttpServletRequest request) {
 		
-		if(error != null) 
-			model.addAttribute("error", "Compruebe el usuario y contraseña");
+		if(error != null) {
+			if(request.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION") instanceof BadCredentialsException) 
+        		model.addAttribute("error", ((BadCredentialsException)request.getSession().getAttribute("SPRING_SECURITY_LAST_EXCEPTION")).getMessage());	
+        	else
+        		model.addAttribute("error", "Compruebe el usuario y contraseña. Si el problema persiste, contacte con el administrador de sistema!");
+		}
 		
 		if(logout != null && !logout.isEmpty()){
 			model.addAttribute("success", "Ha cerrado sesión con éxito!");
@@ -40,9 +45,14 @@ public class LoginController {
 		return "principal/login";
 	}
 
-    @PostMapping(path = "/registration")
+    @GetMapping(path = "/signup")
+    public String singUp(Model model) {
+    	return "principal/signup";
+    }
+
+    @PostMapping(path = "/createNewUser")
     public ResponseEntity<Void> createNewUser(@RequestBody User user) {
-        Optional<User> userExists = userService.findByUsername(user.getUsername());
+        Optional<User> userExists = userService.findByEmail(user.getEmail());
         if(!userExists.isPresent()) {
         	userService.saveUser(user);
             return new ResponseEntity<Void>(HttpStatus.CREATED);
