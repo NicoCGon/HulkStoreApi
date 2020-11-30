@@ -23,12 +23,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         return bCryptPasswordEncoder;
     }
 
+    @Override
     @Bean
     public AuthenticationManager authenticationManager() throws Exception{
         return super.authenticationManager();
     }
     
-	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
